@@ -77,6 +77,22 @@ let matchNum = patternCount(text: "abababa", pattern: "ab")
 print("The number of times the pattern occurs in the text is \(matchNum)")
 
 //4 --
+func popularClasses(studentArray:[Set<String>]) -> Set<String> {
+    var intersect = studentArray[0]
+    var i = 0
+    while i < studentArray.count {
+        let courseSet = intersect.intersection(studentArray[i])
+        i += 1
+        intersect = courseSet
+    }
+    return intersect
+}
+
+let studentA: Set = ["CS101", "CS237", "CS520"]
+let studentB: Set = ["CS101", "Math245", "CS237"]
+let studentC: Set = ["CS237", "CS560"]
+
+popularClasses(studentArray: [studentA, studentB, studentC])
 
 //5 -- If the input array is empty return the optional average value nil
 func average(numberArray: [Int]) -> Double? {
@@ -120,5 +136,110 @@ func average2(numberArray: [Int?]) -> Double? {
 var array2: [Int?] = [1,2,3,nil]
 average2(numberArray: array2)
 
-//7 -- 
+//7 --
+func cost(product: [String: String]) -> Double {
+    var totalCost: Double = 0
+    if let quantity = product["quantity"], let price = product["price"]{
+        //if value can convert to double or integer
+        if let q = Double(quantity), let p = Double(price) {
+            totalCost = q * p
+        }else {
+            print("The value of cannot be converted.")
+        }
+    } else {
+        print("The quantity or price are not exist in the dictionary")
+    }
+    return totalCost
+}
+let iceCreamA = ["name":"Mochie Green Tea", "quantity": "2", "price": "2.3"]
+let iceCreamB = ["name":"Mochie Green Tea", "price": "2.3"]
+print("The total cost of iceCreamA is: \(cost(product: iceCreamA))")
+print("The total cost of iceCreamB is: \(cost(product: iceCreamB))")
 
+//8 --
+func wordCount(words: String, count: Int) -> [String: Int] {
+    var tempSet = Set<String>()
+    var dic = [String: Int]()
+    let wordsArray = words.components(separatedBy: " ")
+    for i in 0..<wordsArray.count {
+        if tempSet.contains(wordsArray[i]) {
+            if let oldValue = dic[wordsArray[i]] {
+                let newValue = oldValue + 1
+                dic.updateValue(newValue, forKey: wordsArray[i])
+            }
+        }else {
+            tempSet.insert(wordsArray[i])
+            dic[wordsArray[i]] = 1
+        }
+    }
+    for(name, num) in dic {
+        if num < count {
+            dic.removeValue(forKey: name)
+        }
+    }
+    return dic
+}
+
+let w = "cat bat cat rat mouse bat"
+let c = 1
+
+wordCount(words: w, count: c)
+
+//9 --
+func wordCount2(words: String, count: Int = 2) -> [String: Int] {
+    var tempSet = Set<String>()
+    var dic = [String: Int]()
+    let wordsArray = words.components(separatedBy: " ")
+    for i in 0..<wordsArray.count {
+        if tempSet.contains(wordsArray[i]) {
+            if let oldValue = dic[wordsArray[i]] {
+                let newValue = oldValue + 1
+                dic.updateValue(newValue, forKey: wordsArray[i])
+            }
+        }else {
+            tempSet.insert(wordsArray[i])
+            dic[wordsArray[i]] = 1
+        }
+    }
+    for(name, num) in dic {
+        if num < count {
+            dic.removeValue(forKey: name)
+        }
+    }
+    return dic
+}
+
+wordCount2(words: w)
+wordCount2(words: w, count: c)
+
+//10 --
+func wordCount3(count: Int) -> (String) -> [String: Int] {
+    func wordCount(words: String) -> [String: Int] {
+        var tempSet = Set<String>()
+        var dic = [String: Int]()
+        let wordsArray = words.components(separatedBy: " ")
+        for i in 0..<wordsArray.count {
+            if tempSet.contains(wordsArray[i]) {
+                if let oldValue = dic[wordsArray[i]] {
+                    let newValue = oldValue + 1
+                    dic.updateValue(newValue, forKey: wordsArray[i])
+                }
+            }else {
+                tempSet.insert(wordsArray[i])
+                dic[wordsArray[i]] = 1
+            }
+        }
+        for(name, num) in dic {
+            if num < count {
+                dic.removeValue(forKey: name)
+            }
+        }
+        return dic
+    }
+    return wordCount
+}
+
+let testA = wordCount3(count: 2)
+testA("a a a b c c")
+let testB = wordCount3(count: 3)
+testB("a a a b c c")

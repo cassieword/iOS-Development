@@ -3,7 +3,12 @@
    version = "3.0">
    <TimelineItems>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/xinyu/iOSdev/AssignmentOne/MyPlayground.playground#CharacterRangeLen=0&amp;CharacterRangeLoc=69&amp;EndingColumnNumber=0&amp;EndingLineNumber=5&amp;StartingColumnNumber=0&amp;StartingLineNumber=5&amp;Timestamp=526273221.814026"
+         documentLocation = "file:///Users/xinyu/iOSdev/AssignmentOne/MyPlayground.playground#CharacterRangeLen=192&amp;CharacterRangeLoc=67&amp;EndingColumnNumber=0&amp;EndingLineNumber=10&amp;StartingColumnNumber=0&amp;StartingLineNumber=3&amp;Timestamp=526292891.478899"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/xinyu/iOSdev/AssignmentOne/MyPlayground.playground#CharacterRangeLen=10&amp;CharacterRangeLoc=180&amp;EndingColumnNumber=15&amp;EndingLineNumber=8&amp;StartingColumnNumber=5&amp;StartingLineNumber=8&amp;Timestamp=526292891.479007"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
